@@ -1,3 +1,5 @@
+from datetime import date
+
 DAYS_NAMES = [
     "Monday",
     "Tuesday",
@@ -79,6 +81,11 @@ def generate_valid_schedule_json(data):
                     ret["week_n"]["Sunday"].append(day)
     
     return ret
+
+
+def get_current_week_type(start_date: date = date(2025, 9, 1), target_date: date | None = None):
+    weeks_passed = (target_date - start_date).days // 7
+    return "v" if weeks_passed % 2 == 0 else "n"
 
 
 
